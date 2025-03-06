@@ -1,6 +1,7 @@
 // backend/routes/negotiationRoutes.js
 const express = require('express');
 const { authenticateUser, authorizeRole } = require('../middleware/authMiddleware');
+const negotiationAI = require("../ai/negotiationAI");
 const router = express.Router();
 
 // Buyer requests a price negotiation
@@ -34,5 +35,26 @@ router.post('/rules', authenticateUser, authorizeRole('seller'), async (req, res
     await rule.save();
     res.json({ message: 'Negotiation rules set successfully' });
 });
+
+
+// POST /api/negotiate
+router.post("/", async (req, res) => {
+  // Expect the request body to include:
+  // - message: the negotiation message from the buyer
+  // - basePrice: the original product price
+  // - buyerHistory: buyer's info, e.g., { isFrequentBuyer: true }
+  const negotiationRequest = req.body;
+
+  try {
+    const result = negotiationAI.negotiatePrice(negotiationRequest);
+    res.json(result);
+  } catch (error) {
+    console.error("Negotiation error:", error);
+    res.status(500).json({ error: "Negotiation failed" });
+  }
+});
+
+module.exports = router;
+
 
 module.exports = router;
