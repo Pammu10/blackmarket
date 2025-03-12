@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
     const buyerHistory = { isFrequentBuyer: buyerRows[0].isFrequentBuyer };
 
     // 2. Retrieve product details to get basePrice and allowedDiscount.
-    const [productRows] = await db.execute("SELECT price, allowedDiscount FROM products WHERE id = ?", [productId]);
+    const [productRows] = await db.execute("SELECT base_price, max_discount FROM products WHERE id = ?", [productId]);
     if (productRows.length === 0) {
       return res.status(404).json({ error: "Product not found" });
     }

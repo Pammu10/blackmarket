@@ -12,7 +12,6 @@ const NegotiationChat = () => {
     const userId = 1;
     try {
       const response = await negotiatePrice(message, selectedProduct, userId);
-      console.log(response, "HERE");
       setResponses([...responses, { user: message, bot: response.message , finalPrice: response.finalPrice }]);
       setMessage("");
     } catch(error) {
@@ -28,7 +27,7 @@ const NegotiationChat = () => {
         const productsList = await fetchProducts();
         setProducts(productsList);
         if (productsList.length > 0) {
-          setSelectedProduct(productsList[0].id);
+          setSelectedProduct(productsList[0].name);
         }
       } catch (error) {
         console.error("Failed to fetch products", error);
@@ -47,11 +46,12 @@ const NegotiationChat = () => {
           onChange={(e) => setSelectedProduct(e.target.value)}
         >
           {products.map((product) => (
-            <option key={product.id} value={product.id}>
-              {product.name} (${product.price})
+            <option key={product.product_id} value={product.product_id}>
+              {product.name} (${product.base_price})
             </option>
           ))}
         </select>
+        <img src={selectedProduct.image_url} alt={selectedProduct.name} width={300}/>
       </div>
       
       <div className="chat-history">

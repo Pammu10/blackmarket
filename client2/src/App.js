@@ -4,6 +4,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import SellerPanel from "./pages/SellerPanel";
+import Auth from "./pages/Auth";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/seller" element={<SellerPanel />} />
         </Routes>
