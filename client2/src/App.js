@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import SellerPanel from "./pages/SellerPanel";
 import Auth from "./pages/Auth";
+import "./App.css";
 
 const App = () => {
   return (

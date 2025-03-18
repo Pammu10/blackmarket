@@ -1,7 +1,7 @@
 // backend/routes/negotiationRoutes.js
 const express = require('express');
 const { authenticateUser, authorizeRole } = require('../middleware/authMiddleware');
-const negotiationAI = require("../ai/negotiationAI");
+const negotiationAI = require("../ai/rlNegotiationAI");
 const router = express.Router();
 
 // Buyer requests a price negotiation
