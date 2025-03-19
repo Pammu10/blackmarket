@@ -165,7 +165,7 @@ app.use('/images', express.static(path.join(__dirname, '/public/reactions')));
 // API endpoint
 app.post("/bargain", (req, res) => {
   const { userInput, requestedDiscount, product } = req.body;
-  const response = negotiate(userInput, requestedDiscount, product);
+  const response = negotiate(userInput, requesteddiscount, product);
   res.json(response);
 });
 
