@@ -10,7 +10,7 @@ const Navbar = () => {
       <Link to="/">🛒 AI eCommerce</Link>
       {user ? (
         <div>
-          <span>Hello, {user.name} ({user.role})</span>
+          <span>Hello, {user.name}</span>
           <button onClick={logout} className="button">Logout</button>
         </div>
       ) : (

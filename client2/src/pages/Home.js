@@ -5,7 +5,7 @@ import BargainApp from "../components/BargainApp";
 
 const Home = () => {
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="container">
       <Navbar />
       <div className="chat-box-header">
         <h1 className="centering">Welcome to AI-Powered eCommerce</h1>
